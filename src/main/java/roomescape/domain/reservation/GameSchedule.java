@@ -19,23 +19,23 @@ public class GameSchedule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "date", nullable = false)
-    private LocalDate date;
     @ManyToOne
     @JoinColumn(name = "theme_id", nullable = false)
     private Theme theme;
+    @Column(name = "date", nullable = false)
+    private LocalDate date;
     @ManyToOne
     @JoinColumn(name = "time_id", nullable = false)
     private GameTime time;
 
     public GameSchedule(final Long id, final Theme theme, final LocalDate date, final GameTime time) {
         this.id = id;
+        this.theme = theme;
         this.date = date;
         this.time = time;
-        this.theme = theme;
     }
 
-    public GameSchedule(final LocalDate date, final GameTime time, final Theme theme) {
+    public GameSchedule(final Theme theme, final LocalDate date, final GameTime time) {
         this(null, theme, date, time);
     }
 }
