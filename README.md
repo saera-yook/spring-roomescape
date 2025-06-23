@@ -64,7 +64,7 @@
             }
         ]
         ```
-- [ ] 관리자는 사용자, 테마, 날짜, 예약시간을 선택하여 예약을 생성할 수 있다.
+- [x] 관리자는 사용자, 테마, 날짜, 예약시간을 선택하여 예약을 생성할 수 있다.
     - [x] 사용자 조회 API 명세
         - Request
             ```http request
@@ -88,7 +88,7 @@
                 }
             ]
             ```
-    - [ ] 예약 추가 API 명세
+    - [x] 예약 추가 API 명세
         - Request
             ```http request
             POST /admin/reservations HTTP/1.1
@@ -97,10 +97,10 @@
             host: localhost:8080
              
             {
-                "date": "2023-08-05",
-                "themeId": 1,
-                "timeId": 1,
                 "memberId": 1
+                "themeId": 1,
+                "date": "2023-08-05",
+                "timeId": 1,
             }
             ```
         - Response

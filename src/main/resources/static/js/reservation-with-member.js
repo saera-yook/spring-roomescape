@@ -157,7 +157,7 @@ function saveRow(event) {
     date: dateInput.value,
     themeId: themeSelect.value,
     timeId: timeSelect.value,
-    userId: memberSelect.value,
+    memberId: memberSelect.value,
   };
 
   requestCreate(reservation)
