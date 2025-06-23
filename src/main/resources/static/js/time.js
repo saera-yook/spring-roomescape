@@ -107,7 +107,7 @@ function requestCreate(data) {
     body: JSON.stringify(data)
   };
 
-  return fetch(API_ENDPOINT, requestOptions)
+  return fetch(`/admin${API_ENDPOINT}`, requestOptions)
       .then(response => {
         if (response.status === 201) return response.json();
         throw new Error('Create failed');
