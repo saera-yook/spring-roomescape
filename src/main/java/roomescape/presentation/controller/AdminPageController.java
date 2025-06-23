@@ -16,4 +16,9 @@ public class AdminPageController {
     public String reservation() {
         return "admin/reservation-new";
     }
+
+    @GetMapping("/time")
+    public String time() {
+        return "admin/time";
+    }
 }

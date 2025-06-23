@@ -143,7 +143,7 @@
 
 ### 어드민 예약시간 관리
 
-- [ ] `/admin/time` 요청 시 예약시간 관리 페이지를 응답한다.
+- [x] `/admin/time` 요청 시 예약시간 관리 페이지를 응답한다.
     - 페이지는 `templates/admin/time.html` 파일을 이용한다.
 - [ ] 예약시간 목록 조회 API 명세
     - Request
