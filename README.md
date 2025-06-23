@@ -166,7 +166,7 @@
             }
         ]
         ```
-- [ ] 예약시간 추가 API 명세
+- [x] 예약시간 추가 API 명세
     - Request
         ```http request
         POST /admin/times HTTP/1.1
