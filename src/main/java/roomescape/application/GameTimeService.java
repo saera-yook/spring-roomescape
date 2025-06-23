@@ -20,4 +20,12 @@ public class GameTimeService {
     public List<GameTime> findAllTimes() {
         return timeRepository.findAll();
     }
+
+    public void removeById(final long id) {
+        if (!timeRepository.existsById(id)) {
+            throw new IllegalArgumentException("해당하는 예약시간이 존재하지 않습니다. id: " + id);
+        }
+
+        timeRepository.deleteById(id);
+    }
 }

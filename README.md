@@ -186,7 +186,7 @@
             "startAt": "10:00"
         }
         ```
-- [ ] 예약시간 삭제 API 명세
+- [x] 예약시간 삭제 API 명세
     - Request
         ```http request
         DELETE /admin/times/1 HTTP/1.1
