@@ -1,5 +1,6 @@
 package roomescape.presentation.response;
 
+import java.util.List;
 import roomescape.domain.theme.Theme;
 
 public record ThemeResponse(
@@ -14,5 +15,11 @@ public record ThemeResponse(
                 theme.getName().value(),
                 theme.getDescription().value(),
                 theme.getThumbnail().url());
+    }
+
+    public static List<ThemeResponse> from(List<Theme> themes) {
+        return themes.stream()
+                .map(ThemeResponse::from)
+                .toList();
     }
 }

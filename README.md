@@ -200,7 +200,7 @@
 
 - [ ] `/admin/theme` 요청 시 테마 관리 페이지를 응답한다.
     - 페이지는 `templates/admin/theme.html` 파일을 이용한다.
-- [ ] 테마 목록 조회 API 명세
+- [x] 테마 목록 조회 API 명세
     - Request
         ```http request
         GET /themes HTTP/1.1

@@ -16,10 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
       .catch(error => console.error('Error fetching reservations:', error));
 
   fetchTimes();
+  fetchThemes();
   fetchMembers();
-
-  <!-- TODO: 테마 조회 API 구현 후 활성화-->
-  // fetchThemes();
 });
 
 function render(data) {
