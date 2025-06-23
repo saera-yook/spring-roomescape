@@ -128,8 +128,8 @@
                  }
             }
             ```
-- [ ] 관리자는 예약을 취소할 수 있다.
-    - [ ] 예약 삭제 API 명세
+- [x] 관리자는 예약을 취소할 수 있다.
+    - [x] 예약 삭제 API 명세
         - Request
             ```http request
             DELETE /admin/reservations/1 HTTP/1.1
