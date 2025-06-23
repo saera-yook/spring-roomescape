@@ -65,7 +65,7 @@
         ]
         ```
 - [ ] 관리자는 사용자, 테마, 날짜, 예약시간을 선택하여 예약을 생성할 수 있다.
-    - [ ] 사용자 조회 API 명세
+    - [x] 사용자 조회 API 명세
         - Request
             ```http request
             GET /admin/members HTTP/1.1
