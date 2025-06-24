@@ -1,8 +1,8 @@
-INSERT INTO MEMBER (name, email, password)
-VALUES ('어드민', 'admin@email.com', 'password'),
-       ('브라운', 'brown@email.com', 'brown'),
-       ('브리', 'brie@email.com', 'brie'),
-       ('솔라', 'solar@email.com', 'solar');
+INSERT INTO MEMBER (name, email, password, role)
+VALUES ('어드민', 'admin@email.com', 'password', 'ADMIN'),
+       ('브라운', 'brown@email.com', 'brown', 'USER'),
+       ('브리', 'brie@email.com', 'brie', 'USER'),
+       ('솔라', 'solar@email.com', 'solar', 'USER');
 
 INSERT INTO GAME_TIME (start_at)
 VALUES ('10:00'),

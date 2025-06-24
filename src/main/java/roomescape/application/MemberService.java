@@ -32,4 +32,10 @@ public class MemberService {
         var members = memberRepository.findAll();
         return MemberResponse.from(members);
     }
+
+    public boolean isAdminAuthorized(final LoginMember loginMember) {
+        var member = memberRepository.findById(loginMember.id())
+                .orElseThrow(() -> new NotFoundException("해당하는 회원이 존재하지 않습니다. id: " + loginMember.id()));
+        return member.isAdmin();
+    }
 }

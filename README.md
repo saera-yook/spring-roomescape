@@ -4,9 +4,9 @@
 
 - [x] `localhost:8080/admin` 요청 시 어드민 메인 페이지를 응답한다.
     - 어드민 메인 페이지는 `templates/admin/index.html` 파일을 이용한다.
-- [ ] `Member`의 `Role`이 `ADMIN`인 사람만 `/admin`으로 시작하는 페이지에 접근할 수 있다.
-    - [ ] HandlerInterceptor를 활용하여 권한을 확인한다.
-    - [ ] 권한이 없는 경우 요청에 대한 거부 응답을 한다.
+- [x] `Member`의 `Role`이 `ADMIN`인 사람만 `/admin`으로 시작하는 페이지에 접근할 수 있다.
+    - [x] HandlerInterceptor를 활용하여 권한을 확인한다.
+    - [x] 권한이 없는 경우 요청에 대한 거부 응답을 한다.
 
 ### 어드민 예약 관리
 
