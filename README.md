@@ -397,6 +397,29 @@
     - 사용자는 예약 가능한 시간을 확인하고, 원하는 시간에 예약을 할 수 있다.
     - 이미 예약된 날짜, 테마, 시간은 예약할 수 없으며, 예약 대기를 신청할 수 있다.
     - [ ] 지나간 날짜와 시간에 대한 예약 생성은 불가능하다.
+    - [ ] 예약 가능 여부를 포함한 예약시간 목록 조회 API 명세
+        - Request
+            ```http request
+            GET /times/available?date=2025-07-25&themeId=1 HTTP/1.1
+            ```
+        - Response
+            ```
+            HTTP/1.1 200
+            Content-Type: application/json
+            
+            [
+                {
+                    "id": 1,
+                    "startAt": "10:00"
+                    "alreadyBooked": true
+                },
+                {
+                    "id": 2,
+                    "startAt": "12:00"
+                    "alreadyBooked": false
+                }
+            ]
+            ```
     - 사용자 예약 생성 API 명세
         - Request
             ```http request
