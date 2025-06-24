@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import roomescape.domain.theme.Theme;
 
 public interface ReservationRepository extends JpaRepository<Reservation, Long> {
     boolean existsBySchedule(GameSchedule schedule);
@@ -22,5 +23,19 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
             @Param("themeId") Long themeId,
             @Param("dateFrom") LocalDate dateFrom,
             @Param("dateTo") LocalDate dateTo
+    );
+
+    @Query("""
+            SELECT r.schedule.theme
+            FROM Reservation r
+            WHERE r.schedule.date BETWEEN :dateFrom AND :dateTo
+            GROUP BY r.schedule.theme
+            ORDER BY count(r) DESC
+            LIMIT :count
+            """)
+    List<Theme> findThemesOrderByPopularity(
+            @Param("dateFrom") LocalDate dateFrom,
+            @Param("dateTo") LocalDate dateTo,
+            @Param("count") int count
     );
 }
