@@ -32,6 +32,10 @@ public class ReservationService {
         return reservationRepository.findAll();
     }
 
+    public List<Reservation> findByFilter(final Long memberId, final Long themeId, final LocalDate dateFrom, final LocalDate dateTo) {
+        return reservationRepository.findByMemberIdAndThemeIdAndDateRange(memberId, themeId, dateFrom, dateTo);
+    }
+
     public void removeById(final long id) {
         if (!reservationRepository.existsById(id)) {
             throw new NotFoundException("해당하는 예약이 존재하지 않습니다. id: " + id);

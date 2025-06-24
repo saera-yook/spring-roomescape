@@ -182,19 +182,19 @@ function applyFilter(event) {
   event.preventDefault();
 
   const themeId = document.getElementById('theme').value;
-  const userId = document.getElementById('member').value;
+  const memberId = document.getElementById('member').value;
   const dateFrom = document.getElementById('date-from').value;
   const dateTo = document.getElementById('date-to').value;
 
   // 예약 검색 - 조건에 따른 예약 조회 API 호출
   // 요청 포맷에 맞게 설정
   const queryParam =
-      (themeId ? `themeId=${themeId}` : '')
-      + (userId ? `&userId=${userId}` : '')
+      (memberId ? `memberId=${memberId}` : '')
+      + (themeId ? `&themeId=${themeId}` : '')
       + (dateFrom ? `&dateFrom=${dateFrom}` : '')
       + (dateTo ? `&dateTo=${dateTo}` : '');
 
-  const url = '/reservations?' + queryParam;
+  const url = '/admin/reservations/filter?' + queryParam;
   fetch(url, { // 예약 검색 API 호출
     method: 'GET',
     headers: {
