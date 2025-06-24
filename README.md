@@ -198,7 +198,7 @@
 
 ### 어드민 테마 관리
 
-- [ ] `/admin/theme` 요청 시 테마 관리 페이지를 응답한다.
+- [x] `/admin/theme` 요청 시 테마 관리 페이지를 응답한다.
     - 페이지는 `templates/admin/theme.html` 파일을 이용한다.
 - [x] 테마 목록 조회 API 명세
     - Request
