@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import roomescape.domain.member.MemberRepository;
 import roomescape.domain.reservation.Reservation;
 import roomescape.domain.reservation.ReservationRepository;
+import roomescape.exception.NotFoundException;
 
 @RequiredArgsConstructor
 @Service
@@ -32,7 +33,7 @@ public class ReservationService {
 
     public void removeById(final long id) {
         if (!reservationRepository.existsById(id)) {
-            throw new IllegalArgumentException("해당하는 예약이 존재하지 않습니다. id: " + id);
+            throw new NotFoundException("해당하는 예약이 존재하지 않습니다. id: " + id);
         }
 
         reservationRepository.deleteById(id);

@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import roomescape.domain.reservation.GameTime;
 import roomescape.domain.reservation.GameTimeRepository;
+import roomescape.exception.NotFoundException;
 
 @RequiredArgsConstructor
 @Service
@@ -23,7 +24,7 @@ public class GameTimeService {
 
     public void removeById(final long id) {
         if (!timeRepository.existsById(id)) {
-            throw new IllegalArgumentException("해당하는 예약시간이 존재하지 않습니다. id: " + id);
+            throw new NotFoundException("해당하는 예약시간이 존재하지 않습니다. id: " + id);
         }
 
         timeRepository.deleteById(id);
