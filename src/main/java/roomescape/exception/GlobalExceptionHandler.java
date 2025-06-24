@@ -20,6 +20,12 @@ public class GlobalExceptionHandler {
         return createProblemDetail("입력 오류", HttpStatus.BAD_REQUEST, e.getMessage());
     }
 
+    @ExceptionHandler(AlreadyExistingException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ProblemDetail handleAlreadyExisting(AlreadyExistingException e) {
+        return createProblemDetail("입력 오류", HttpStatus.BAD_REQUEST, e.getMessage());
+    }
+
     private ProblemDetail createProblemDetail(String title, HttpStatus status, String detail) {
         var problemDetail = ProblemDetail.forStatusAndDetail(status, detail);
         problemDetail.setTitle(title);

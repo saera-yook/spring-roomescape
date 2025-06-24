@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import roomescape.domain.member.MemberRepository;
 import roomescape.domain.reservation.Reservation;
 import roomescape.domain.reservation.ReservationRepository;
+import roomescape.exception.AlreadyExistingException;
 import roomescape.exception.NotFoundException;
 
 @RequiredArgsConstructor
@@ -19,7 +20,7 @@ public class ReservationService {
     public Reservation register(final long memberId, final long themeId, final LocalDate date, final long timeId) {
         var schedule = scheduleService.getBy(themeId, date, timeId);
         if (reservationRepository.existsBySchedule(schedule)) {
-            throw new IllegalArgumentException("이미 예약된 게임 일정입니다. id: " + schedule.getId());
+            throw new AlreadyExistingException("이미 예약된 게임 일정입니다. id: " + schedule.getId());
         }
 
         var member = memberRepository.findById(memberId).orElseThrow();
