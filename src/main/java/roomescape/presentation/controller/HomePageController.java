@@ -9,4 +9,9 @@ public class HomePageController {
     public String login() {
         return "login";
     }
+
+    @GetMapping("/reservation")
+    public String reservation() {
+        return "reservation";
+    }
 }
