@@ -225,7 +225,7 @@
             }
         ]
         ```
-- [ ] 테마 추가 API 명세
+- [x] 테마 추가 API 명세
     - Request
         ```http request
         POST /admin/themes HTTP/1.1
