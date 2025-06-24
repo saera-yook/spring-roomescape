@@ -365,7 +365,7 @@
             Keep-Alive: timeout=60
             Set-Cookie: JSESSIONID=89EA9B9B9F00EAC2B8D2208649EA6260; Path=/; HttpOnly
             ```
-- [ ] 로그인 후 사용자의 정보를 조회하는 API를 구현한다.
+- [x] 로그인 후 사용자의 정보를 조회하는 API를 구현한다.
     - 상단바 우측에 로그인 상태를 표현한다.
     - 인증 정보 조회 API 명세
         - Request
