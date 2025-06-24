@@ -250,7 +250,7 @@
             "thumbnail": "https://i.pinimg.com/236x/6e/bc/46/6ebc461a94a49f9ea3b8bbe2204145d4.jpg"
         }
         ```
-- [ ] 테마 삭제 API 명세
+- [x] 테마 삭제 API 명세
     - Request
         ```http request
         DELETE /admin/themes/1 HTTP/1.1
