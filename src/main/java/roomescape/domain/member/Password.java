@@ -3,6 +3,7 @@ package roomescape.domain.member;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import jakarta.validation.constraints.NotBlank;
+import roomescape.exception.InvalidInputException;
 
 @Embeddable
 public record Password(
@@ -12,7 +13,7 @@ public record Password(
 ) {
     public Password {
         if (50 < value.length()) {
-            throw new IllegalArgumentException("비밀번호는 50자를 넘을 수 없습니다.");
+            throw new InvalidInputException("비밀번호는 50자를 넘을 수 없습니다.");
         }
     }
 }

@@ -4,6 +4,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import jakarta.validation.constraints.NotBlank;
 import java.util.regex.Pattern;
+import roomescape.exception.InvalidInputException;
 
 @Embeddable
 public record Email(
@@ -15,11 +16,11 @@ public record Email(
 
     public Email {
         if (!VALID_PATTERN.matcher(value).matches()) {
-            throw new IllegalArgumentException("올바른 형식의 이메일을 입력해주세요.");
+            throw new InvalidInputException("올바른 형식의 이메일을 입력해주세요.");
         }
 
         if (50 < value.length()) {
-            throw new IllegalArgumentException("이메일은 50자를 넘을 수 없습니다.");
+            throw new InvalidInputException("이메일은 50자를 넘을 수 없습니다.");
         }
     }
 }
