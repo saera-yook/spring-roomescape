@@ -528,7 +528,31 @@
     - 페이지는 `templates/index.html` 파일을 이용한다.
 - [x] 최근 일주일을 기준으로 하여 해당 기간 내에 방문하는 예약이 많은 테마 10개를 조회한다.
     - 예를 들어 오늘이 4월 8일인 경우, 게임 날짜가 4월 1일부터 4월 7일까지인 예약 건수가 많은 순서대로 10개의 테마를 조회할 수 있어야 한다.
-
+- 인기 테마 목록 조회 API 명세
+    - Request
+        ```http request
+        GET /themes/popular?startDate=2025-06-17&endDate=2025-06-23&count=10 HTTP/1.1
+        ```
+    - Response
+        ```
+        HTTP/1.1 200
+        Content-Type: application/json
+        
+        [
+            {
+                "id": 1,
+                "name": "레벨1 탈출",
+                "description": "우테코 레벨1을 탈출하는 내용입니다.",
+                "thumbnail": "https://i.pinimg.com/236x/6e/bc/46/6ebc461a94a49f9ea3b8bbe2204145d4.jpg"
+            },
+            {
+                "id": 2,
+                "name": "레벨2 탈출",
+                "description": "우테코 레벨2를 탈출하는 내용입니다.",
+                "thumbnail": "https://i.pinimg.com/236x/6e/bc/46/6ebc461a94a49f9ea3b8bbe2204145d4.jpg"
+            }
+        ]
+        ```
 ## 예외처리
 - [ ] 발생할 수 있는 예외 상황에 대한 처리를 하여, 사용자에게 적절한 응답을 한다.
     - [ ] 시간 생성 시 시작 시간에 유효하지 않은 값이 입력되었을 때
