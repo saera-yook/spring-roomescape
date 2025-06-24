@@ -343,7 +343,7 @@
 ### 로그인
 
 - [ ] 세션 로그인 기능을 구현한다.
-- [ ] `GET /login` 요청 시 로그인 폼이 있는 페이지를 응답한다.
+- [x] `GET /login` 요청 시 로그인 폼이 있는 페이지를 응답한다.
     - 페이지는 `templates/login.html` 파일을 이용한다.
 - [ ] `POST /login` 요청 시 로그인 폼에 입력한 email, password 값을 body에 포함하여 응답한다.
     - 로그인 요청 API 명세
