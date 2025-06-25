@@ -26,6 +26,12 @@ public class GlobalExceptionHandler {
         return createProblemDetail("입력 오류", HttpStatus.BAD_REQUEST, e.getMessage());
     }
 
+    @ExceptionHandler(AuthenticationException.class)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    public ProblemDetail handleAlreadyExisting(AuthenticationException e) {
+        return createProblemDetail("인증 오류", HttpStatus.UNAUTHORIZED, e.getMessage());
+    }
+
     private ProblemDetail createProblemDetail(String title, HttpStatus status, String detail) {
         var problemDetail = ProblemDetail.forStatusAndDetail(status, detail);
         problemDetail.setTitle(title);

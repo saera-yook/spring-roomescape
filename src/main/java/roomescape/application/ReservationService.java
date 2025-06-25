@@ -37,8 +37,8 @@ public class ReservationService {
         return reservationRepository.findByMemberIdAndThemeIdAndDateRange(memberId, themeId, dateFrom, dateTo);
     }
 
-    public List<Reservation> findAllByMemberId(final LoginMember loginMember) {
-        return reservationRepository.findByMember_Id(loginMember.id());
+    public List<Reservation> findAllByMemberId(final Long id) {
+        return reservationRepository.findByMember_Id(id);
     }
 
     public void removeById(final long id) {

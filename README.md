@@ -387,7 +387,7 @@
                 "name": "어드민"
             }
             ```
-- [ ] HandlerMethodArgumentResolver를 활용해 회원정보를 컨트롤러 메서드에 주입한다.
+- [x] HandlerMethodArgumentResolver를 활용해 회원정보를 컨트롤러 메서드에 주입한다.
 
 ### 사용자 예약
 
