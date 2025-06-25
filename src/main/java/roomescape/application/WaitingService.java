@@ -1,6 +1,7 @@
 package roomescape.application;
 
 import java.time.LocalDate;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import roomescape.domain.member.MemberRepository;
@@ -25,5 +26,9 @@ public class WaitingService {
 
         var member = memberRepository.findById(memberId).orElseThrow();
         return waitingRepository.save(new Waiting(member, schedule));
+    }
+
+    public List<Waiting> findAllWaitings() {
+        return waitingRepository.findAll();
     }
 }

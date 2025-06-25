@@ -1,8 +1,10 @@
 package roomescape.presentation.controller;
 
 import jakarta.validation.Valid;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -22,5 +24,11 @@ public class WaitingController {
     public WaitingResponse apply(@AuthenticationInfo Long id, @Valid @RequestBody CreateWaitingRequest request) {
         var waiting = waitingService.register(id, request.date(), request.timeId(), request.themeId());
         return WaitingResponse.from(waiting);
+    }
+
+    @GetMapping("/admin/waitings")
+    public List<WaitingResponse> getAllWaitings() {
+        var waitings = waitingService.findAllWaitings();
+        return WaitingResponse.from(waitings);
     }
 }

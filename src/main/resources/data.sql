@@ -2,7 +2,8 @@ INSERT INTO MEMBER (name, email, password, role)
 VALUES ('어드민', 'admin@email.com', 'password', 'ADMIN'),
        ('브라운', 'brown@email.com', 'brown', 'USER'),
        ('브리', 'brie@email.com', 'brie', 'USER'),
-       ('솔라', 'solar@email.com', 'solar', 'USER');
+       ('솔라', 'solar@email.com', 'solar', 'USER'),
+       ('검프', 'gump@email.com', 'gump', 'USER');
 
 INSERT INTO GAME_TIME (start_at)
 VALUES ('10:00'),
@@ -48,3 +49,18 @@ VALUES (1, 1),
        (4, 11),
        (4, 12),
        (4, 13);
+
+INSERT INTO WAITING (member_id, schedule_id)
+VALUES (2, 1),
+       (3, 1),
+       (4, 1),
+       (5, 1),
+       (5, 2),
+       (4, 2),
+       (3, 2),
+       (4, 3),
+       (5, 3),
+       (3, 4),
+       (4, 5),
+       (2, 6),
+       (5, 7);

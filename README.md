@@ -264,7 +264,7 @@
 
 - [x] `/admin/waiting` 요청 시 예약 대기 관리 페이지를 응답한다.
     - 페이지는 `templates/admin/waiting.html` 파일을 이용한다.
-- [ ] 예약 대기 목록 조회 API 명세
+- [x] 예약 대기 목록 조회 API 명세
     - Request
         ```http request
         GET /admin/waitings HTTP/1.1

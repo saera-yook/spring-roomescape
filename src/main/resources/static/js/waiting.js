@@ -17,15 +17,15 @@ function render(data) {
   data.forEach(item => {
     const row = tableBody.insertRow();
 
-    const order = item.order;
+    /*const order = item.order;*/
     const id = item.id;
-    const name = item.user.name;
+    const name = item.member.name;
     const theme = item.theme.name;
     const date = item.date;
     const startAt = item.time.startAt;
 
     row.dataset.id = id;
-    row.insertCell(0).textContent = order;         // 예약 대기 순번
+    row.insertCell(0).textContent = id;         // 예약 대기 번호
     row.insertCell(1).textContent = name;          // 예약자명
     row.insertCell(2).textContent = theme;         // 테마명
     row.insertCell(3).textContent = date;          // 예약 날짜
