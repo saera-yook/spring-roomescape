@@ -468,7 +468,46 @@
     - [ ] 사용자는 예약 실패 시, 결제 실패 사유를 알 수 있다.
 
 ### 예약 대기
-- [ ] 이미 예약된 게임은 예약 대기를 신청할 수 있다.
+- [x] 이미 예약된 게임은 예약 대기를 신청할 수 있다.
+    - 예약 대기 추가 API 명세
+        - Request
+            ```http request
+            POST /waitings HTTP/1.1
+            content-type: application/json
+            Headers: Cookie=JSESSIONID=89EA9B9B9F00EAC2B8D2208649EA6260
+            host: localhost:8080
+          
+            {
+                "date": "2023-08-05",
+                "timeId": 1,
+                "themeId": 1
+            }
+            ```
+        - Response
+            ```
+            HTTP/1.1 201
+            Content-Type: application/json
+             
+            {
+                 "id": 1,
+                 "member": {
+                     "id": 1,
+                     "name": "브라운",
+                     "email": "brown@email.com"
+                 }
+                 "theme": {
+                     "id": 1,
+                     "name": "레벨1 탈출",
+                     "description": "우테코 레벨1을 탈출하는 내용입니다.",
+                     "thumbnail": "https://i.pinimg.com/236x/6e/bc/46/6ebc461a94a49f9ea3b8bbe2204145d4.jpg"
+                 }
+                 "date": "2023-08-05",
+                 "time": {
+                     "id": 1,
+                     "startAt": "10:00"
+                 }
+            }
+            ```
 - [ ] 신청한 예약 대기를 취소할 수 있다.
 
 ### 내 예약 목록 조회

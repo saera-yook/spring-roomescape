@@ -236,7 +236,7 @@ function onWaitButtonClick() {
       themeId: selectedThemeId
     };
 
-    fetch('/reservations/wait', {
+    fetch('/waitings', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

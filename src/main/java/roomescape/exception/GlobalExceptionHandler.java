@@ -26,9 +26,15 @@ public class GlobalExceptionHandler {
         return createProblemDetail("입력 오류", HttpStatus.BAD_REQUEST, e.getMessage());
     }
 
+    @ExceptionHandler(BusinessRuleViolationException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ProblemDetail handleBusinessRuleViolation(BusinessRuleViolationException e) {
+        return createProblemDetail("비즈니스 정책 위반", HttpStatus.BAD_REQUEST, e.getMessage());
+    }
+
     @ExceptionHandler(AuthenticationException.class)
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
-    public ProblemDetail handleAlreadyExisting(AuthenticationException e) {
+    public ProblemDetail handleAuthentication(AuthenticationException e) {
         return createProblemDetail("인증 오류", HttpStatus.UNAUTHORIZED, e.getMessage());
     }
 
