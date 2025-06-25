@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import roomescape.domain.member.LoginMember;
 import roomescape.domain.member.MemberRepository;
 import roomescape.domain.reservation.Reservation;
 import roomescape.domain.reservation.ReservationRepository;
@@ -34,6 +35,10 @@ public class ReservationService {
 
     public List<Reservation> findByFilter(final Long memberId, final Long themeId, final LocalDate dateFrom, final LocalDate dateTo) {
         return reservationRepository.findByMemberIdAndThemeIdAndDateRange(memberId, themeId, dateFrom, dateTo);
+    }
+
+    public List<Reservation> findAllByMemberId(final LoginMember loginMember) {
+        return reservationRepository.findByMember_Id(loginMember.id());
     }
 
     public void removeById(final long id) {

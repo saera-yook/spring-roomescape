@@ -10,6 +10,8 @@ import roomescape.domain.theme.Theme;
 public interface ReservationRepository extends JpaRepository<Reservation, Long> {
     boolean existsBySchedule(GameSchedule schedule);
 
+    List<Reservation> findByMember_Id(Long memberId);
+
     @Query("""
             SELECT r
             FROM Reservation r
