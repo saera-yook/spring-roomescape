@@ -19,4 +19,9 @@ public class HomePageController {
     public String reservation() {
         return "reservation";
     }
+
+    @GetMapping("/reservation-mine")
+    public String reservationsMine() {
+        return "reservation-mine";
+    }
 }
