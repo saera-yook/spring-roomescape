@@ -33,6 +33,10 @@ public class WaitingService {
         return waitingRepository.findAll();
     }
 
+    public List<Waiting> findAllByMemberId(final long memberId) {
+        return waitingRepository.findAllByMember_Id(memberId);
+    }
+
     public void removeById(final long id) {
         if (!waitingRepository.existsById(id)) {
             throw new NotFoundException("해당하는 예약 대기가 존재하지 않습니다. id: " + id);
