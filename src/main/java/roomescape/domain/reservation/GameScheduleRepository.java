@@ -7,4 +7,6 @@ import roomescape.domain.theme.Theme;
 
 public interface GameScheduleRepository extends JpaRepository<GameSchedule, Long> {
     Optional<GameSchedule> findByThemeAndDateAndTime(Theme theme, LocalDate date, GameTime time);
+
+    Optional<GameSchedule> findByTheme_IdAndDateAndTime(Long themeId, LocalDate date, GameTime time);
 }

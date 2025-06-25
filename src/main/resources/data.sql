@@ -1,8 +1,8 @@
-INSERT INTO MEMBER (name, email, password)
-VALUES ('어드민', 'admin@email.com', 'password'),
-       ('브라운', 'brown@email.com', 'brown'),
-       ('브리', 'brie@email.com', 'brie'),
-       ('솔라', 'solar@email.com', 'solar');
+INSERT INTO MEMBER (name, email, password, role)
+VALUES ('어드민', 'admin@email.com', 'password', 'ADMIN'),
+       ('브라운', 'brown@email.com', 'brown', 'USER'),
+       ('브리', 'brie@email.com', 'brie', 'USER'),
+       ('솔라', 'solar@email.com', 'solar', 'USER');
 
 INSERT INTO GAME_TIME (start_at)
 VALUES ('10:00'),
@@ -20,19 +20,19 @@ VALUES ('레벨1 탈출', '우테코 레벨1을 탈출하는 내용입니다.', 
        ('레벨5 탈출', '우테코 레벨를 탈출하는 내용입니다.', 'https://i.pinimg.com/236x/6e/bc/46/6ebc461a94a49f9ea3b8bbe2204145d4.jpg');
 
 INSERT INTO GAME_SCHEDULE (theme_id, date, time_id)
-VALUES (1, '2025-07-07', 1),
-       (2, '2025-07-08', 1),
-       (2, '2025-07-09', 2),
-       (3, '2025-07-11', 1),
-       (3, '2025-07-11', 2),
-       (3, '2025-07-12', 3),
-       (4, '2025-07-12', 1),
-       (4, '2025-07-12', 2),
-       (4, '2025-07-12', 3),
-       (4, '2025-07-12', 4),
-       (5, '2025-07-12', 1),
-       (5, '2025-07-12', 2),
-       (5, '2025-07-12', 3);
+VALUES (1, '2025-06-23', 1),
+       (2, '2025-06-23', 1),
+       (2, '2025-06-23', 2),
+       (3, '2025-06-23', 1),
+       (3, '2025-06-23', 2),
+       (3, '2025-06-23', 3),
+       (4, '2025-06-23', 1),
+       (4, '2025-06-23', 2),
+       (4, '2025-06-23', 3),
+       (4, '2025-06-23', 4),
+       (5, '2025-06-23', 1),
+       (5, '2025-06-23', 2),
+       (5, '2025-06-23', 3);
 
 INSERT INTO RESERVATION (member_id, schedule_id)
 VALUES (1, 1),

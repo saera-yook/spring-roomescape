@@ -3,6 +3,7 @@ package roomescape.domain.member;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import jakarta.validation.constraints.NotBlank;
+import roomescape.exception.InvalidInputException;
 
 @Embeddable
 public record MemberName(
@@ -12,7 +13,7 @@ public record MemberName(
 ) {
     public MemberName {
         if (20 < value.length()) {
-            throw new IllegalArgumentException("이름은 20자를 넘을 수 없습니다.");
+            throw new InvalidInputException("이름은 20자를 넘을 수 없습니다.");
         }
     }
 }
