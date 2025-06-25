@@ -9,6 +9,7 @@ import roomescape.domain.reservation.ReservationRepository;
 import roomescape.domain.reservation.Waiting;
 import roomescape.domain.reservation.WaitingRepository;
 import roomescape.exception.BusinessRuleViolationException;
+import roomescape.exception.NotFoundException;
 
 @RequiredArgsConstructor
 @Service
@@ -30,5 +31,13 @@ public class WaitingService {
 
     public List<Waiting> findAllWaitings() {
         return waitingRepository.findAll();
+    }
+
+    public void removeById(final long id) {
+        if (!waitingRepository.existsById(id)) {
+            throw new NotFoundException("해당하는 예약 대기가 존재하지 않습니다. id: " + id);
+        }
+
+        waitingRepository.deleteById(id);
     }
 }
