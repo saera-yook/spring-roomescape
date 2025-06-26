@@ -1,7 +1,8 @@
 package roomescape.domain.payment;
 
 import roomescape.application.PaymentConfirmRequest;
+import roomescape.application.reponse.PaymentConfirmResponse;
 
 public interface PaymentClient {
-    Payment confirm(final PaymentConfirmRequest request);
+    PaymentConfirmResponse confirm(final PaymentConfirmRequest request);
 }

@@ -5,9 +5,6 @@ import java.util.Comparator;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import roomescape.domain.payment.OrderId;
-import roomescape.domain.payment.PaymentAmount;
-import roomescape.domain.payment.PaymentKey;
 import roomescape.domain.reservation.Reservation;
 import roomescape.presentation.request.ReservationPaymentRequest;
 import roomescape.presentation.response.MyReservationResponse;
@@ -21,8 +18,7 @@ public class RoomescapeService {
 
     public Reservation reserveAndPay(final Long id, final ReservationPaymentRequest request) {
         var reservation = reservationService.register(id, request.themeId(), request.date(), request.timeId());
-        paymentService.pay(new PaymentKey(request.paymentKey()), new OrderId(request.orderId()),
-                new PaymentAmount(request.amount()));
+        paymentService.pay(new PaymentConfirmRequest(request.paymentKey(), request.orderId(), request.amount()), reservation);
         return reservation;
     }
 
