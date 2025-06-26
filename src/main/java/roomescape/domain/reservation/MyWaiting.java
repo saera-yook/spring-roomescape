@@ -9,6 +9,7 @@ public record MyWaiting(
         long scheduleId,
         ThemeName themeName,
         LocalDate date,
-        LocalTime startAt
+        LocalTime startAt,
+        long order
 ) {
 }

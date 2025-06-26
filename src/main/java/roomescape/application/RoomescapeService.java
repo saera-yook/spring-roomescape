@@ -15,7 +15,7 @@ public class RoomescapeService {
 
     public List<MyReservationResponse> getMyReservationsAndWaitings(final long memberId) {
         var reservations = reservationService.findAllByMemberId(memberId);
-        var waitings = waitingService.findMyWaitings(memberId);
+        var waitings = waitingService.findMyWaitingsWithOrder(memberId);
 
         var responses = new ArrayList<MyReservationResponse>();
         responses.addAll(MyReservationResponse.fromReservations(reservations));

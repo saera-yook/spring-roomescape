@@ -5,20 +5,16 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 public interface WaitingRepository extends JpaRepository<Waiting, Long> {
-    List<Waiting> findAllByMember_Id(Long memberId);
-
     @Query("""
-            SELECT new roomescape.domain.reservation.MyWaiting(w.id, gs.id, gs.theme.name, gs.date, gs.time.startAt)
+            SELECT new roomescape.domain.reservation.MyWaiting(w.id, gs.id, gs.theme.name, gs.date, gs.time.startAt,
+                    (SELECT count(w2)
+                     FROM Waiting w2
+                     WHERE w2.schedule.id = gs.id
+                         AND w2.id <= w.id)
+            )
             FROM Waiting w
-            LEFT JOIN GameSchedule gs ON w.schedule.id = gs.id
+            JOIN GameSchedule gs ON w.schedule.id = gs.id
             WHERE w.member.id = :memberId
             """)
-    List<MyWaiting> findMyWaitings(Long memberId);
-
-    @Query("""
-            SELECT count(w)
-            FROM Waiting w
-            WHERE w.schedule.id = :scheduleId AND w.id <= :waitingId
-            """)
-    long countWaitings(long waitingId, long scheduleId);
+    List<MyWaiting> findMyWaitingsWithOrder(Long memberId);
 }

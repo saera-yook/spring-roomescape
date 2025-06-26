@@ -3,7 +3,7 @@ package roomescape.presentation.response;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
-import roomescape.domain.reservation.MyWaitingWithOrder;
+import roomescape.domain.reservation.MyWaiting;
 import roomescape.domain.reservation.Reservation;
 
 public record MyReservationResponse(
@@ -29,12 +29,12 @@ public record MyReservationResponse(
         );
     }
 
-    public static MyReservationResponse from(MyWaitingWithOrder waiting) {
+    public static MyReservationResponse from(MyWaiting waiting) {
         return new MyReservationResponse(
-                waiting.waiting().waitingId(),
-                waiting.waiting().themeName().value(),
-                waiting.waiting().date(),
-                waiting.waiting().startAt(),
+                waiting.waitingId(),
+                waiting.themeName().value(),
+                waiting.date(),
+                waiting.startAt(),
                 waiting.order() + "번째 예약대기",
                 "",
                 ""
@@ -47,7 +47,7 @@ public record MyReservationResponse(
                 .toList();
     }
 
-    public static List<MyReservationResponse> fromWaitings(List<MyWaitingWithOrder> waitings) {
+    public static List<MyReservationResponse> fromWaitings(List<MyWaiting> waitings) {
         return waitings.stream()
                 .map(MyReservationResponse::from)
                 .toList();
