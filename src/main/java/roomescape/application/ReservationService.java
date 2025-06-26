@@ -5,6 +5,7 @@ import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import roomescape.domain.member.MemberRepository;
+import roomescape.domain.reservation.GameSchedule;
 import roomescape.domain.reservation.Reservation;
 import roomescape.domain.reservation.ReservationRepository;
 import roomescape.exception.AlreadyExistingException;
@@ -38,6 +39,11 @@ public class ReservationService {
 
     public List<Reservation> findAllByMemberId(final Long id) {
         return reservationRepository.findByMember_Id(id);
+    }
+
+    public GameSchedule getScheduleByReservationId(final long reservationId) {
+        return reservationRepository.findScheduleById(reservationId)
+                .orElseThrow(() -> new NotFoundException("해당하는 예약이 존재하지 않습니다. id: " + reservationId));
     }
 
     public void removeById(final long id) {

@@ -1,6 +1,7 @@
 package roomescape.domain.reservation;
 
 import java.util.List;
+import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -17,4 +18,6 @@ public interface WaitingRepository extends JpaRepository<Waiting, Long> {
             WHERE w.member.id = :memberId
             """)
     List<MyWaiting> findMyWaitingsWithOrder(Long memberId);
+
+    Optional<Waiting> findFirstBySchedule(GameSchedule scheduleId);
 }

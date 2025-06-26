@@ -27,4 +27,10 @@ public class RoomescapeService {
         );
         return responses;
     }
+
+    public void cancelReservation(final long reservationId) {
+        var schedule = reservationService.getScheduleByReservationId(reservationId);
+        reservationService.removeById(reservationId);
+        waitingService.approveFirstWaitingOn(schedule);
+    }
 }

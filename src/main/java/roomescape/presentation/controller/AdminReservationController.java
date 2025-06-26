@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import roomescape.application.ReservationService;
+import roomescape.application.RoomescapeService;
 import roomescape.presentation.request.CreateReservationRequest;
 import roomescape.presentation.response.ReservationResponse;
 
@@ -23,6 +24,7 @@ import roomescape.presentation.response.ReservationResponse;
 @RequestMapping("/admin/reservations")
 public class AdminReservationController {
     private final ReservationService reservationService;
+    private final RoomescapeService roomescapeService;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -52,6 +54,6 @@ public class AdminReservationController {
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void cancel(@PathVariable("id") long id) {
-        reservationService.removeById(id);
+        roomescapeService.cancelReservation(id);
     }
 }
