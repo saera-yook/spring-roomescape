@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('/members/reservations') // 내 예약 목록 조회 API 호출
+    fetch('/reservations-mine') // 내 예약 목록 조회 API 호출
         .then(response => {
             if (response.status === 200) return response.json();
             throw new Error('Read failed');
@@ -15,9 +15,9 @@ function render(data) {
     data.forEach(item => {
         const row = tableBody.insertRow();
 
-        const theme = item.theme.name;
+        const theme = item.themeName;
         const date = item.date;
-        const time = item.time.startAt;
+        const time = item.startAt;
         const status = item.status;
 
         row.insertCell(0).textContent = theme;
@@ -43,7 +43,7 @@ function render(data) {
 }
 
 function requestDeleteWaiting(id) {
-    return fetch('/reservations/wait/' + id, {
+    return fetch('/waitings/' + id, {
         method: 'DELETE'
     }).then(response => {
         if (response.status === 204) return;

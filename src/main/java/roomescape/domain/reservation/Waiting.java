@@ -6,7 +6,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,24 +14,24 @@ import roomescape.domain.member.Member;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-public class Reservation {
+public class Waiting {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
     @JoinColumn(name = "member_id", nullable = false)
     private Member member;
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "schedule_id", nullable = false)
     private GameSchedule schedule;
 
-    public Reservation(final Long id, final Member member, final GameSchedule schedule) {
+    public Waiting(final Long id, final Member member, final GameSchedule schedule) {
         this.id = id;
         this.member = member;
         this.schedule = schedule;
     }
 
-    public Reservation(final Member member, final GameSchedule schedule) {
+    public Waiting(final Member member, final GameSchedule schedule) {
         this(null, member, schedule);
     }
 }

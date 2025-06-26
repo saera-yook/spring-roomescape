@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import roomescape.application.MemberService;
 import roomescape.domain.member.LoginMember;
+import roomescape.presentation.AuthenticationInfo;
 import roomescape.presentation.request.LoginRequest;
 import roomescape.presentation.response.LoginMemberResponse;
 
@@ -27,9 +28,8 @@ public class LoginController {
     }
 
     @GetMapping("/login/check")
-    public LoginMemberResponse check(HttpSession session) {
-        var loginMember = (LoginMember) session.getAttribute(SESSION_KEY);
-        var member = memberService.findBy(loginMember);
+    public LoginMemberResponse check(@AuthenticationInfo Long id) {
+        var member = memberService.getById(id);
         return LoginMemberResponse.from(member);
     }
 }

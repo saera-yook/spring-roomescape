@@ -16,10 +16,8 @@ import roomescape.exception.NotFoundException;
 public class MemberService {
     private final MemberRepository memberRepository;
 
-    public MemberResponse findBy(final LoginMember loginMember) {
-        var member = memberRepository.findById(loginMember.id())
-                .orElseThrow(() -> new NotFoundException("해당하는 회원이 존재하지 않습니다. id: " + loginMember.id()));
-        return MemberResponse.from(member);
+    public boolean existsBy(final LoginMember loginMember) {
+        return memberRepository.existsById(loginMember.id());
     }
 
     public MemberResponse findByMemberInfo(final String email, final String password) {
@@ -31,6 +29,12 @@ public class MemberService {
     public List<MemberResponse> findAllMembers() {
         var members = memberRepository.findAll();
         return MemberResponse.from(members);
+    }
+
+    public MemberResponse getById(final Long id) {
+        var member = memberRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("해당하는 회원이 존재하지 않습니다. id: " + id));
+        return MemberResponse.from(member);
     }
 
     public boolean isAdminAuthorized(final LoginMember loginMember) {

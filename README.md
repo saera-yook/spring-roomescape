@@ -262,9 +262,9 @@
 
 ### 어드민 예약 대기 관리
 
-- [ ] `/admin/waiting` 요청 시 예약 대기 관리 페이지를 응답한다.
+- [x] `/admin/waiting` 요청 시 예약 대기 관리 페이지를 응답한다.
     - 페이지는 `templates/admin/waiting.html` 파일을 이용한다.
-- [ ] 예약 대기 목록 조회 API 명세
+- [x] 예약 대기 목록 조회 API 명세
     - Request
         ```http request
         GET /admin/waitings HTTP/1.1
@@ -315,8 +315,8 @@
             }
         ]
         ```
-- [ ] 관리자는 예약 대기 요청을 거절할 수 있다.
-    - [ ] 예약 대기 삭제 API 명세
+- [x] 관리자는 예약 대기 요청을 거절할 수 있다.
+    - [x] 예약 대기 삭제 API 명세
         - Request
             ```http request
             DELETE /waitings/1 HTTP/1.1
@@ -325,7 +325,7 @@
             ```
             HTTP/1.1 204
             ```
-- [ ] 예약 취소 발생 시 예약 대기자가 있는 경우 예약 승인이 된다.
+- [x] 예약 취소 발생 시 예약 대기자가 있는 경우 예약 승인이 된다.
       
 ## 사용자
 
@@ -387,7 +387,7 @@
                 "name": "어드민"
             }
             ```
-- [ ] HandlerMethodArgumentResolver를 활용해 회원정보를 컨트롤러 메서드에 주입한다.
+- [x] HandlerMethodArgumentResolver를 활용해 회원정보를 컨트롤러 메서드에 주입한다.
 
 ### 사용자 예약
 
@@ -468,16 +468,57 @@
     - [ ] 사용자는 예약 실패 시, 결제 실패 사유를 알 수 있다.
 
 ### 예약 대기
-- [ ] 이미 예약된 게임은 예약 대기를 신청할 수 있다.
-- [ ] 신청한 예약 대기를 취소할 수 있다.
+- [x] 이미 예약된 게임은 예약 대기를 신청할 수 있다.
+    - 예약 대기 추가 API 명세
+        - Request
+            ```http request
+            POST /waitings HTTP/1.1
+            content-type: application/json
+            Headers: Cookie=JSESSIONID=89EA9B9B9F00EAC2B8D2208649EA6260
+            host: localhost:8080
+          
+            {
+                "date": "2023-08-05",
+                "timeId": 1,
+                "themeId": 1
+            }
+            ```
+        - Response
+            ```
+            HTTP/1.1 201
+            Content-Type: application/json
+             
+            {
+                 "id": 1,
+                 "member": {
+                     "id": 1,
+                     "name": "브라운",
+                     "email": "brown@email.com"
+                 }
+                 "theme": {
+                     "id": 1,
+                     "name": "레벨1 탈출",
+                     "description": "우테코 레벨1을 탈출하는 내용입니다.",
+                     "thumbnail": "https://i.pinimg.com/236x/6e/bc/46/6ebc461a94a49f9ea3b8bbe2204145d4.jpg"
+                 }
+                 "date": "2023-08-05",
+                 "time": {
+                     "id": 1,
+                     "startAt": "10:00"
+                 }
+            }
+            ```
+- [x] 신청한 예약 대기를 취소할 수 있다.
 
 ### 내 예약 목록 조회
-- [ ] `/reservations-mine` 요청 시 내 예약 페이지를 응답한다.
+- [x] `/reservation-mine` 요청 시 내 예약 페이지를 응답한다.
     - 페이지는 `templates/reservation-mine.html` 파일을 이용한다.
 - [ ] 사용자의 예약과 예약 대기 목록을 조회한다.
-    - [ ] 내 예약 페이지에서 예약 정보와 결제 정보를 확인할 수 있다.
-    - [ ] 내 예약 목록의 예약 대기 상태에서 몇 번째 대기인지 확인할 수 있다.
-- [ ] 내 예약 목록을 조회하는 API 명세
+    - [x] 내 예약 페이지에서 예약 정보를 확인할 수 있다.
+    - [ ] 예약 정보와 함께 결제 정보를 확인할 수 있다.
+    - [x] 내 예약 페이지에서 예약 대기 정보도 함께 확인할 수 있다.
+    - [x] 내 예약 목록의 예약 대기 상태에서 몇 번째 대기인지 확인할 수 있다.
+- 내 예약 목록을 조회하는 API 명세
     - Request
         ```http request
         GET /reservations-mine HTTP/1.1

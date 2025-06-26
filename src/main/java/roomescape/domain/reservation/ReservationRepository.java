@@ -2,6 +2,7 @@ package roomescape.domain.reservation;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -9,6 +10,8 @@ import roomescape.domain.theme.Theme;
 
 public interface ReservationRepository extends JpaRepository<Reservation, Long> {
     boolean existsBySchedule(GameSchedule schedule);
+
+    List<Reservation> findByMember_Id(Long memberId);
 
     @Query("""
             SELECT r
@@ -38,4 +41,11 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
             @Param("dateTo") LocalDate dateTo,
             @Param("count") int count
     );
+
+    @Query("""
+            SELECT r.schedule
+            FROM Reservation r
+            WHERE r.id = :reservationId
+            """)
+    Optional<GameSchedule> findScheduleById(Long id);
 }
