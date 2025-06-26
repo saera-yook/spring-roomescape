@@ -15,7 +15,7 @@ public class RoomescapeService {
 
     public List<MyReservationResponse> getMyReservationsAndWaitings(final long memberId) {
         var reservations = reservationService.findAllByMemberId(memberId);
-        var waitings = waitingService.findAllByMemberId(memberId);
+        var waitings = waitingService.findMyWaitings(memberId);
 
         var responses = new ArrayList<MyReservationResponse>();
         responses.addAll(MyReservationResponse.fromReservations(reservations));
@@ -23,7 +23,7 @@ public class RoomescapeService {
 
         responses.sort(Comparator
                 .comparing(MyReservationResponse::date)
-                .thenComparing((response) -> response.time().startAt())
+                .thenComparing(MyReservationResponse::startAt)
         );
         return responses;
     }

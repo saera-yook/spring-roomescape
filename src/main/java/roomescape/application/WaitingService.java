@@ -5,6 +5,7 @@ import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import roomescape.domain.member.MemberRepository;
+import roomescape.domain.reservation.MyWaitingWithOrder;
 import roomescape.domain.reservation.ReservationRepository;
 import roomescape.domain.reservation.Waiting;
 import roomescape.domain.reservation.WaitingRepository;
@@ -35,6 +36,17 @@ public class WaitingService {
 
     public List<Waiting> findAllByMemberId(final long memberId) {
         return waitingRepository.findAllByMember_Id(memberId);
+    }
+
+    public List<MyWaitingWithOrder> findMyWaitings(final long memberId) {
+        var myWaitings = waitingRepository.findMyWaitings(memberId);
+        return myWaitings.stream()
+                .map(waiting -> new MyWaitingWithOrder(waiting, countOrder(waiting.waitingId(), waiting.scheduleId())))
+                .toList();
+    }
+
+    public long countOrder(final long waitingId, final long scheduleId) {
+        return waitingRepository.countWaitings(waitingId, scheduleId);
     }
 
     public void removeById(final long id) {

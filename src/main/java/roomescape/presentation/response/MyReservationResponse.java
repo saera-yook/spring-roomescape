@@ -1,15 +1,16 @@
 package roomescape.presentation.response;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
+import roomescape.domain.reservation.MyWaitingWithOrder;
 import roomescape.domain.reservation.Reservation;
-import roomescape.domain.reservation.Waiting;
 
 public record MyReservationResponse(
-        long reservationId,
-        ThemeResponse theme,
+        long id,
+        String themeName,
         LocalDate date,
-        GameTimeResponse time,
+        LocalTime startAt,
         String status,
         String paymentKey,
         String amount
@@ -19,24 +20,22 @@ public record MyReservationResponse(
 
         return new MyReservationResponse(
                 reservation.getId(),
-                ThemeResponse.from(schedule.getTheme()),
+                schedule.getTheme().getName().value(),
                 schedule.getDate(),
-                GameTimeResponse.from(schedule.getTime()),
+                schedule.getTime().getStartAt(),
                 "예약",
                 "",
                 ""
         );
     }
 
-    public static MyReservationResponse from(Waiting waiting) {
-        var schedule = waiting.getSchedule();
-
+    public static MyReservationResponse from(MyWaitingWithOrder waiting) {
         return new MyReservationResponse(
-                waiting.getId(),
-                ThemeResponse.from(schedule.getTheme()),
-                schedule.getDate(),
-                GameTimeResponse.from(schedule.getTime()),
-                "예약대기",
+                waiting.waiting().waitingId(),
+                waiting.waiting().themeName().value(),
+                waiting.waiting().date(),
+                waiting.waiting().startAt(),
+                waiting.order() + "번째 예약대기",
                 "",
                 ""
         );
@@ -48,7 +47,7 @@ public record MyReservationResponse(
                 .toList();
     }
 
-    public static List<MyReservationResponse> fromWaitings(List<Waiting> waitings) {
+    public static List<MyReservationResponse> fromWaitings(List<MyWaitingWithOrder> waitings) {
         return waitings.stream()
                 .map(MyReservationResponse::from)
                 .toList();
