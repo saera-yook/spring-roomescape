@@ -8,6 +8,12 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
+    @ExceptionHandler(InvalidValueException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ProblemDetail handleInvalidValue(InvalidValueException e) {
+        return createProblemDetail("유효하지 않은 값", HttpStatus.BAD_REQUEST, e.getMessage());
+    }
+
     @ExceptionHandler(InvalidInputException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ProblemDetail handleInvalidInput(InvalidInputException e) {
